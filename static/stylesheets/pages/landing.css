@@ -1,0 +1,6 @@
+body {
+    background: var(--body-background-color) center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../../images/background.jpg");
+}
