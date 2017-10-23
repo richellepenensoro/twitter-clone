@@ -1,0 +1,9 @@
+.hidden {
+    display: none !important;
+}
+
+.wrapper {
+    width: 90vw;
+    max-width: 120rem;
+    margin: 0 auto;
+}

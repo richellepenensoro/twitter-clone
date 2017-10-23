@@ -1,0 +1,8 @@
+body {
+    min-height: 100vh;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.6em;
+    -webkit-font-smoothing: antialiased;
+    color: var(--primary-text-color);
+    background-color: var(--body-background-color);
+}
