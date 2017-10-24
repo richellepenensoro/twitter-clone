@@ -1,7 +1,8 @@
 -- Create a table named "users" with the following columns:
 --     fullname     (string)
---     username     (string)        unique
+--     username     (string)        unique, max length = 15
 --     email        (string)        primary key
---     createdAt    (timestamp)
+--     password     (string)
+--     created_at   (timestamp)     default to current timestamp
 --
 -- Write your query below:
