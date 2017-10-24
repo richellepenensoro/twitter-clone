@@ -1,0 +1,22 @@
+.menu {
+    padding: 1rem 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-item a {
+    display: block;
+    padding: 0.8rem 1.6rem;
+    text-decoration: none;
+}
+
+.menu-item:not(.menu-item--no-highlight) a:hover,
+.menu-item:not(.menu-item--no-highlight) a:focus {
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
+.menu-separator {
+    border-top: 1px solid var(--gray-1);
+    margin: 0.5rem 0;
+}
