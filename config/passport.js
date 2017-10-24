@@ -5,14 +5,17 @@ const { query } = require('../utils');
 
 passport.use(new LocalStrategy({
     usernameField: 'identifier'
-}, (username, password, done) => {
-    const user = {
-        fullname: 'Arnelle Balane',
-        username: 'arnellebalane',
-        email: 'arnellebalane@gmail.com',
-        avatar: 'static/images/default-avatar.png'
-    };
-    done(null, user);
+}, async (idenfier, password, done) => {
+    const getUserWithCredentialsQuery = await query('05-get-user-with-credentials.sql', { identifier, password });
+    const users = await db.query(getUserWithCredentialsQuery);
+
+    if (users.rows.length > 0) {
+        const user = users.row[0];
+        user.avatar = 'static/images/default-avatar.png';
+        done(null, user);
+    } else {
+        done(null, new Error('User not found.'));
+    }
 }));
 
 passport.serializeUser((user, done) => {
