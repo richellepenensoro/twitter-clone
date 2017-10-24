@@ -10,8 +10,8 @@
     text-decoration: none;
 }
 
-.menu-item:not(.menu-item--no-highlight) a:hover,
-.menu-item:not(.menu-item--no-highlight) a:focus {
+.menu-item a:hover,
+.menu-item a:focus {
     color: #fff;
     background-color: var(--primary-color);
 }
@@ -19,4 +19,18 @@
 .menu-separator {
     border-top: 1px solid var(--gray-1);
     margin: 0.5rem 0;
+}
+
+
+/** User details menu item **/
+
+.menu-item.user-details a {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.menu-item.user-details a:hover,
+.menu-item.user-details a:focus {
+    color: inherit;
+    background-color: inherit;
 }
