@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
-const bodyparser = require('body-parser');
 const consolidate = require('consolidate');
+const bodyparser = require('body-parser');
+const passport = require('passport');
 const morgan = require('morgan');
 const winston = require('winston');
 const config = require('./config');
@@ -14,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(morgan('dev'));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json())
+app.use(passport.initialize());
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use('/', require('./routes'));
