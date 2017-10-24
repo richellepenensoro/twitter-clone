@@ -2,6 +2,8 @@ const router = new require('express').Router();
 const passport = require('./config/passport');
 
 router.get('/', (req, res) => {
+    res.locals.user = req.user;
+
     if (req.user) {
         res.render('feed.html');
     } else {

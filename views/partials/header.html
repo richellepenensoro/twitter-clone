@@ -1,10 +1,28 @@
 <header id="site-header">
     <div class="wrapper">
-        <nav class="header-nav">
-            <a class="header-nav-item" href="/">
-                <img src="static/images/twitter.svg" alt="Twitter Logo">
-                Home
-            </a>
-        </nav>
+        {% if user %}
+            <nav class="header-nav">
+                <a class="header-nav-item header-nav-item--selected" href="/">
+                    <img src="static/images/home.svg" alt="Twitter Logo">
+                    Home
+                </a>
+            </nav>
+
+            <div class="user-actions dropdown js-dropdown">
+                <img class="avatar js-dropdown-trigger" src="static/images/default-avatar.png" alt="{{ user.username }}">
+                <div class="dropdown-content dropdown-content--hidden js-dropdown-content">
+                    <ul class="menu">
+                        <li class="menu-item"><a href="/logout">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        {% else %}
+            <nav class="header-nav">
+                <a class="header-nav-item" href="/">
+                    <img src="static/images/twitter.svg" alt="Twitter Logo">
+                    Home
+                </a>
+            </nav>
+        {% endif %}
     </div>
 </header>
