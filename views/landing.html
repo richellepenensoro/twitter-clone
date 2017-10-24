@@ -22,38 +22,44 @@
 
         <div class="auth-forms">
             <form class="auth-form login-form" action="#" method="post">
-                <div class="field">
-                    <input type="text" name="identifier" placeholder="Email or username">
-                </div>
-                <div class="field">
-                    <input type="password" name="password" placeholder="Password">
-                    <button class="btn btn-outline btn-primary">Log in</button>
-                </div>
-                <footer class="actions">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="remember">
-                        Remember me
-                    </label>
-                    <span class="separator">·</span>
-                    <a href="#">Forgot password?</a>
-                </footer>
+                <main class="form-body">
+                    <div class="field">
+                        <input type="text" name="identifier" placeholder="Email or username">
+                    </div>
+                    <div class="field">
+                        <input type="password" name="password" placeholder="Password">
+                        <button class="btn btn-outline btn-primary">Log in</button>
+                    </div>
+                    <footer class="actions">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember">
+                            Remember me
+                        </label>
+                        <span class="separator">·</span>
+                        <a href="#">Forgot password?</a>
+                    </footer>
+                </main>
             </form>
 
             <form class="auth-form signup-form" action="#" method="post">
-                <h3 class="form-title">New to Twitter? <span>Sign up</span></h3>
+                <header class="form-header">
+                    <h3 class="form-title">New to Twitter? <span>Sign up</span></h3>
+                </header>
 
-                <div class="field">
-                    <input type="text" name="fullname" placeholder="Full name">
-                </div>
-                <div class="field">
-                    <input type="email" name="email" placeholder="Email">
-                </div>
-                <div class="field">
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <footer class="actions">
-                    <button class="btn btn-primary">Sign up for Twitter</button>
-                </footer>
+                <main class="form-body">
+                    <div class="field">
+                        <input type="text" name="fullname" placeholder="Full name">
+                    </div>
+                    <div class="field">
+                        <input type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="field">
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <footer class="actions">
+                        <button class="btn btn-primary">Sign up for Twitter</button>
+                    </footer>
+                </main>
             </form>
         </div>
     </main>
