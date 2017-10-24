@@ -1,5 +1,6 @@
 const router = new require('express').Router();
 const passport = require('./config/passport');
+const db = require('./config/database');
 
 router.get('/', (req, res) => {
     res.locals.user = req.user;
