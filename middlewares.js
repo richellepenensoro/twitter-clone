@@ -1,5 +1,5 @@
 function flash(req, res, next) {
-    req.flash = function(key, value) {
+    req.flash = (key, value) => {
         if (!req.session.flash) {
             req.session.flash = {};
         }
