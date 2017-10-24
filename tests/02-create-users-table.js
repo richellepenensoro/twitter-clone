@@ -1,4 +1,3 @@
-const assert = require('assert');
 const { Pool } = require('pg');
 const config = require('../config');
 const { query } = require('../utils');
