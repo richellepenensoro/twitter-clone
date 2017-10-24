@@ -2,6 +2,7 @@ const router = new require('express').Router();
 const passport = require('./config/passport');
 const db = require('./config/database');
 const { flash } = require('./middlewares');
+const { query } = require('./utils');
 
 router.use(flash);
 
@@ -32,8 +33,8 @@ router.post('/login',
 );
 
 router.post('/signup', async (req, res) => {
-    const getUserWithEmailQuery = query('03-get-user-with-email.sql', { email: req.body.email });
-    const users = await db.query(getUserWithEmailQuery);
+    const getUsersWithEmailQuery = await query('03-get-users-with-email.sql', { email: req.body.email });
+    const users = await db.query(getUsersWithEmailQuery);
     if (users.rows.length > 0) {
         req.flash('signupError', 'Email is already in use.');
         return res.redirect('/');
@@ -45,7 +46,7 @@ router.post('/signup', async (req, res) => {
         email: req.body.email,
         password: req.body.password
     };
-    const insertUserQuery = query('04-insert-user.sql', user);
+    const insertUserQuery = await query('04-insert-user.sql', user);
     await db.query(insertUserQuery);
 
     req.login(user, (err) => res.redirect('/'));
