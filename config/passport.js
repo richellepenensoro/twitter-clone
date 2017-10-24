@@ -5,16 +5,16 @@ const { query } = require('../utils');
 
 passport.use(new LocalStrategy({
     usernameField: 'identifier'
-}, async (idenfier, password, done) => {
+}, async (identifier, password, done) => {
     const getUserWithCredentialsQuery = await query('05-get-user-with-credentials.sql', { identifier, password });
     const users = await db.query(getUserWithCredentialsQuery);
 
     if (users.rows.length > 0) {
-        const user = users.row[0];
+        const user = users.rows[0];
         user.avatar = 'static/images/default-avatar.png';
         done(null, user);
     } else {
-        done(null, new Error('User not found.'));
+        done(null, false);
     }
 }));
 
@@ -31,7 +31,7 @@ passport.deserializeUser(async (email, done) => {
         user.avatar = 'static/images/default-avatar.png';
         done(null, users.rows[0]);
     } else {
-        done(null, new Error('User not found.'));
+        done(null, false);
     }
 });
 
