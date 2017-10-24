@@ -13,6 +13,7 @@ body {
 }
 
 a,
+input,
 button {
     font: inherit;
     color: inherit;

@@ -1,0 +1,29 @@
+.field,
+.actions {
+    display: flex;
+}
+
+.field:not(:first-child),
+.actions:not(:first-child) {
+    margin-top: 0.8rem;
+}
+
+.field:not(:last-child),
+.actions:not(:last-child) {
+    margin-bottom: 0.8rem;
+}
+
+input {
+    padding: 0.4rem;
+    border: 1px solid var(--gray-2);
+    border-radius: 3px;
+}
+
+.field input:not([type="checkbox"]),
+.field input:not([type="radio"]) {
+    width: 100%;
+}
+
+.field input:not(:only-child):not(:last-child) {
+    margin-right: 0.8rem;
+}

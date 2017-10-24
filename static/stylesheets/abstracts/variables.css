@@ -1,7 +1,11 @@
 :root {
     --primary-color: #1da1f2;
+    --primary-color-dark: #006dbf;
     --body-background-color: #e6ecf0;
 
     --primary-text-color: #333;
     --secondary-text-color: #66757f;
+
+    --gray-1: #e6ecf0;
+    --gray-2: #ccd6dd;
 }
