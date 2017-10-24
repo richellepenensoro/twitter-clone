@@ -31,6 +31,26 @@ router.post('/login',
     }
 );
 
+router.post('/signup', async (req, res) => {
+    const getUserWithEmailQuery = query('03-get-user-with-email.sql', { email: req.body.email });
+    const users = await db.query(getUserWithEmailQuery);
+    if (users.rows.length > 0) {
+        req.flash('signupError', 'Email is already in use.');
+        return res.redirect('/');
+    }
+
+    const user = {
+        fullname: req.body.fullname,
+        username: req.body.fullname.replace(/\s+/g, '').toLowerCase(),
+        email: req.body.email,
+        password: req.body.password
+    };
+    const insertUserQuery = query('04-insert-user.sql', user);
+    await db.query(insertUserQuery);
+
+    req.login(user, (err) => res.redirect('/'));
+});
+
 router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
