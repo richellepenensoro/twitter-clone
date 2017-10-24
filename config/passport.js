@@ -5,7 +5,6 @@ passport.use(new LocalStrategy({
     usernameField: 'identifier'
 }, (username, password, done) => {
     const user = {
-        id: 1,
         fullname: 'Arnelle Balane',
         username: 'arnellebalane',
         email: 'arnellebalane@gmail.com',
@@ -15,12 +14,11 @@ passport.use(new LocalStrategy({
 }));
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user.email);
 });
 
-passport.deserializeUser((id, done) => {
+passport.deserializeUser((email, done) => {
     const user = {
-        id: id,
         fullname: 'Arnelle Balane',
         username: 'arnellebalane',
         email: 'arnellebalane@gmail.com',
