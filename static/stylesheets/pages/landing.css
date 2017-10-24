@@ -11,15 +11,33 @@ body {
 
 main.wrapper {
     display: flex;
-    width: 84rem;
+    width: 82rem;
     padding-top: 7rem;
 }
+
+
+/** Welcome text  */
 
 .welcome-text {
     flex-grow: 1;
     margin-right: 7rem;
     color: #fff;
 }
+
+.welcome-text h1 {
+    margin: 0;
+    margin-bottom: 3rem;
+    font-size: 2.8rem;
+}
+
+.welcome-text p {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+
+/** Authentication forms **/
 
 .auth-forms {
     flex-shrink: 0;
