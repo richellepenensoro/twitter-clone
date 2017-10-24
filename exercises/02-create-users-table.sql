@@ -3,3 +3,5 @@
 --     username     (string)        unique
 --     email        (string)        primary key
 --     createdAt    (timestamp)
+--
+-- Write your query below:
