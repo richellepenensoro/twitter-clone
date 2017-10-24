@@ -2,8 +2,11 @@ const router = new require('express').Router();
 const passport = require('./config/passport');
 
 router.get('/', (req, res) => {
-    console.log(req.user);
-    res.render('landing.html');
+    if (req.user) {
+        res.render('feed.html');
+    } else {
+        res.render('landing.html');
+    }
 });
 
 router.post('/login',
