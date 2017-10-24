@@ -9,9 +9,16 @@
             </nav>
 
             <div class="user-actions dropdown js-dropdown">
-                <img class="avatar js-dropdown-trigger" src="static/images/default-avatar.png" alt="{{ user.username }}">
-                <div class="dropdown-content dropdown-content--hidden js-dropdown-content">
+                <img class="user-avatar js-dropdown-trigger" src="{{ user.avatar }}" alt="{{ user.username }}">
+                <div class="dropdown-content js-dropdown-content">
                     <ul class="menu">
+                        <li class="menu-item menu-item--no-highlight user-details">
+                            <a href="#">
+                                <h4>{{ user.fullname }}</h4>
+                                <p>@{{ user.username }}</p>
+                            </a>
+                        </li>
+                        <li class="menu-separator"></li>
                         <li class="menu-item"><a href="/logout">Log out</a></li>
                     </ul>
                 </div>

@@ -49,7 +49,7 @@
     margin-left: auto;
 }
 
-.user-actions .avatar {
+.user-actions .user-avatar {
     display: block;
     width: 3.2rem;
     height: 3.2rem;
@@ -57,4 +57,15 @@
     border-radius: 50%;
     object-fit: cover;
     object-position: center center;
+}
+
+.user-actions .user-details h4 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.user-actions .user-details p {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--gray-3);
 }
