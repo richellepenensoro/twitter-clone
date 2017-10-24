@@ -1,7 +1,16 @@
 {
-  "host": "",
-  "database": "",
-  "port": 0,
-  "user": "",
-  "password": ""
+  "development": {
+    "host": "",
+    "database": "",
+    "port": 0,
+    "user": "",
+    "password": ""
+  },
+  "test": {
+    "host": "",
+    "database": "",
+    "port": 0,
+    "user": "",
+    "password": ""
+  }
 }
