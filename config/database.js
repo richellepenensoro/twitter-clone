@@ -5,7 +5,7 @@ const { query } = require('../utils');
 const exercisesDirectory = config.get('EXERCISES_DIRECTORY');
 const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.json`);
 
-const pool = new Pool(databaseConfig.test);
+const pool = new Pool(databaseConfig.development);
 
 // Run prerequisite queries on app startup.
 const queries = [
