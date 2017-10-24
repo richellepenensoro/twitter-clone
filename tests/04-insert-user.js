@@ -51,20 +51,31 @@ suite('04-insert-user', function() {
             const user = users.rows[0];
             for (let key in userData) {
                 if (userData[key] !== user[key]) {
-                    throw new Error(`user's "${key}" column was not insert properly`);
+                    throw new Error(`user's "${key}" column was not inserted properly`);
                 }
             }
         }
     });
 
-    test('sets proper value for "created_at" column', async function() {
+    test('sets default value for "created_at" column', async function() {
         const userData = {
-            fullname: 'First User',
-            username: 'firstuser',
-            email: 'firstuser@gmail.com',
+            fullname: 'Third User',
+            username: 'thirduser',
+            email: 'thirduser@gmail.com',
             password: 'password'
         };
         const insertUserQuery = await query('04-insert-user.sql', userData);
         await this.pool.query(insertUserQuery);
+
+        const getUsersWithEmailQuery = `
+            SELECT * FROM users
+            WHERE email = '${userData.email}';
+        `;
+        const users = await this.pool.query(getUsersWithEmailQuery);
+        const user = users.rows[0];
+
+        if (!Boolean(user.created_at)) {
+            throw new Error('user\'s "created_at" column was not inserted properly');
+        }
     });
 });
