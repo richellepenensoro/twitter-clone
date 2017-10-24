@@ -4,6 +4,14 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
+#site-header .wrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+/** Navigation menu **/
+
 .header-nav {
     display: flex;
 }
@@ -21,7 +29,8 @@
 }
 
 .header-nav-item:hover,
-.header-nav-item:focus {
+.header-nav-item:focus,
+.header-nav-item--selected {
     color: var(--primary-color);
     border-top: 2px solid transparent;
     border-bottom: 2px solid var(--primary-color);
@@ -31,4 +40,21 @@
     width: 2.4rem;
     height: 2.4rem;
     margin: 1.2rem 0.4rem 1.2rem 0;
+}
+
+
+/** User actions **/
+
+.user-actions {
+    margin-left: auto;
+}
+
+.user-actions .avatar {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 1px solid var(--gray-2);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center center;
 }
