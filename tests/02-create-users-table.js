@@ -116,6 +116,24 @@ suite('02-create-users-table', function() {
         }
     });
 
+    test('creates "password" column properly', async function() {
+        const getPasswordColumnQuery = `
+            SELECT * FROM information_schema.columns
+            WHERE table_name = 'users'
+                AND column_name = 'password';
+        `;
+        const columns = await this.pool.query(getPasswordColumnQuery);
+        const passwordColumn = columns.rows[0];
+
+        if (!passwordColumn) {
+            throw new Error('the "password" column was not created');
+        } else if (passwordColumn.data_type !== 'character varying') {
+            throw new Error('the "password" column should be of type VARCHAR');
+        } else if (passwordColumn.is_nullable !== 'NO') {
+            throw new Error('the "password" column should not be nullable');
+        }
+    });
+
     test('creates "created_at" column properly', async function() {
         const getCreatedAtColumnQuery = `
             SELECT * FROM information_schema.columns
