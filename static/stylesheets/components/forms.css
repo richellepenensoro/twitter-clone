@@ -27,3 +27,8 @@ input {
 .field input:not(:only-child):not(:last-child) {
     margin-right: 0.8rem;
 }
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+}
