@@ -1,0 +1,5 @@
+-- Create a table named "users" with the following columns:
+--     fullname     (string)
+--     username     (string)        unique
+--     email        (string)        primary key
+--     createdAt    (timestamp)
