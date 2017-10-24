@@ -1,6 +1,9 @@
 const router = new require('express').Router();
 const passport = require('./config/passport');
 const db = require('./config/database');
+const { flash } = require('./middlewares');
+
+router.use(flash);
 
 router.get('/', (req, res) => {
     res.locals.user = req.user;
@@ -13,7 +16,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/login',
-    passport.authenticate('local', { failureRedirect: '/' }),
+    passport.authenticate('local', {
+        failureRedirect: '/',
+        failureFlash: 'Invalid user credentials.'
+    }),
 
     (req, res) => {
         if (req.body.remember) {

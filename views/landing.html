@@ -25,6 +25,10 @@
         <div class="auth-forms">
             <form class="auth-form login-form" action="/login" method="post">
                 <main class="form-body">
+                    {% if flash.error %}
+                        <p class="form-error">{{ flash.error }}</p>
+                    {% endif %}
+
                     <div class="field">
                         <input type="text" name="identifier" placeholder="Email or username">
                     </div>
@@ -49,6 +53,10 @@
                 </header>
 
                 <main class="form-body">
+                    {% if flash.signupError %}
+                        <p class="form-error">{{ flash.signupError }}</p>
+                    {% endif %}
+
                     <div class="field">
                         <input type="text" name="fullname" placeholder="Full name">
                     </div>
