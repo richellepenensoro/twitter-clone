@@ -9,8 +9,7 @@ suite('02-create-users-table', function() {
     const dropUsersTableQuery = 'DROP TABLE IF EXISTS users;';
 
     suiteSetup(async function() {
-        const databaseConnection = databaseConfig.test;
-        this.pool = new Pool(databaseConnection);
+        this.pool = new Pool(databaseConfig.test);
         await this.pool.query(dropUsersTableQuery);
 
         const sql = await query('02-create-users-table.sql');

@@ -6,14 +6,12 @@ const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.
 
 suite('01-database-connection', function() {
     test('development database configured properly', async function() {
-        const databaseConnection = databaseConfig.development;
-        const pool = new Pool(databaseConnection);
+        const pool = new Pool(databaseConfig.development);
         await pool.connect();
     });
 
     test('test database configured properly', async function() {
-        const databaseConnection = databaseConfig.test;
-        const pool = new Pool(databaseConnection);
+        const pool = new Pool(databaseConfig.test);
         await pool.connect();
     });
 });
