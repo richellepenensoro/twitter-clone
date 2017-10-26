@@ -28,7 +28,7 @@
 
 .btn-outline:hover,
 .btn-outline:focus {
-    background-color: transparent;
+    background-color: var(--primary-color-light);
 }
 
 .btn-outline.btn-primary {
