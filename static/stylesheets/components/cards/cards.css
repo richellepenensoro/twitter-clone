@@ -2,3 +2,17 @@
     border: 1px solid var(--gray-1);
     background-color: #fff;
 }
+
+.card-header {
+    padding: 1.6rem;
+    padding-bottom: 0;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.card-section {
+    padding: 1.6rem;
+}

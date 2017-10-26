@@ -5,6 +5,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="static/stylesheets/layout/page.css">
     <link rel="stylesheet" href="static/stylesheets/components/cards/cards.css">
+    <link rel="stylesheet" href="static/stylesheets/components/cards/follow-card.css">
     <link rel="stylesheet" href="static/stylesheets/components/cards/profile-card.css">
     <link rel="stylesheet" href="static/stylesheets/components/stats.css">
     <link rel="stylesheet" href="static/stylesheets/pages/feed.css">
@@ -23,7 +24,7 @@
         </main>
 
         <aside class="sidebar">
-            <p>right sidebar</p>
+            {% include 'partials/follow-card.html' %}
         </aside>
     </div>
 {% endblock %}
