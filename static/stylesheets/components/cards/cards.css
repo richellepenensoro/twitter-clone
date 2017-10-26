@@ -4,6 +4,8 @@
 }
 
 .card-header {
+    display: flex;
+    align-items: baseline;
     padding: 1.6rem;
     padding-bottom: 0;
 }
@@ -11,6 +13,17 @@
 .card-title {
     margin: 0;
     font-size: 1.8rem;
+}
+
+.card-link {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.card-header .separator {
+    margin: 0 0.4rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .card-section {

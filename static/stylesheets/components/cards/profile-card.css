@@ -35,12 +35,3 @@
     font-weight: 400;
     color: var(--gray-3);
 }
-
-.profile-card a {
-    text-decoration: none;
-}
-
-.profile-card a:hover,
-.profile-card a:focus {
-    text-decoration: underline;
-}
