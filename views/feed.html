@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="static/stylesheets/components/cards/follow-card.css">
     <link rel="stylesheet" href="static/stylesheets/components/cards/profile-card.css">
     <link rel="stylesheet" href="static/stylesheets/components/stats.css">
+    <link rel="stylesheet" href="static/stylesheets/components/tweetbox.css">
     <link rel="stylesheet" href="static/stylesheets/pages/feed.css">
 {% endblock %}
 
@@ -20,7 +21,10 @@
         </aside>
 
         <main class="content">
-            <p>main content</p>
+            <form class="tweetbox" action="#" method="post">
+                <img class="avatar" src="{{ user.avatar }}" alt="{{ user.fullname }}">
+                <textarea class="tweet-input" name="tweet" maxlength="140" placeholder="What's happening?"></textarea>
+            </form>
         </main>
 
         <aside class="sidebar">
