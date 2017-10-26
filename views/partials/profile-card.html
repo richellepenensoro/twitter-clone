@@ -1,3 +1,9 @@
 <section class="card profile-card">
-    <p>profile card</p>
+    <img class="cover-photo" src="static/images/default-cover.jpg" alt="{{ user.fullname }}">
+
+    <header>
+        <img class="user-avatar" src="{{ user.avatar }}" alt="{{ user.fullname }}">
+        <h1><a href="#">{{ user.fullname }}</a></h1>
+        <h2><a href="#">@{{ user.username }}</a></h2>
+    </header>
 </section>
