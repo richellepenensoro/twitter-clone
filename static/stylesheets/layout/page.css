@@ -6,7 +6,6 @@
 .sidebar {
     flex-shrink: 0;
     width: 30rem;
-    border: 1px solid blue;
 }
 
 .content {
