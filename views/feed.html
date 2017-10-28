@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="static/stylesheets/components/cards/profile-card.css">
     <link rel="stylesheet" href="static/stylesheets/components/stats.css">
     <link rel="stylesheet" href="static/stylesheets/components/tweetbox.css">
+    <link rel="stylesheet" href="static/stylesheets/components/tweets.css">
     <link rel="stylesheet" href="static/stylesheets/pages/feed.css">
 {% endblock %}
 
@@ -25,6 +26,47 @@
                 <img class="avatar" src="{{ user.avatar }}" alt="{{ user.fullname }}">
                 <textarea class="tweet-input" name="tweet" maxlength="140" placeholder="What's happening?"></textarea>
             </form>
+
+            <article class="tweet">
+                <img class="tweet-avatar" src="static/images/default-avatar.png" alt="Arnelle Balane">
+                <div class="tweet-details">
+                    <header class="tweet-header">
+                        <h2 class="tweet-author">
+                            Arnelle Balane
+                            <span class="tweet-username">@arnellebalane</span>
+                        </h2>
+                        <span class="separator">·</span>
+                        <time class="tweet-timeago">2m</time>
+                    </header>
+                    <main class="tweet-body">
+                        <p>Lorem ipsum dolor sit amet. Consectetur adipiscing elit. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
+                        <p>The quick brown fox jumped over the lazy dog.</p>
+                    </main>
+                    <footer class="tweet-footer">
+                        <button class="btn btn-icon">Like</button>
+                    </footer>
+                </div>
+            </article>
+            <article class="tweet">
+                <img class="tweet-avatar" src="static/images/default-avatar.png" alt="Arnelle Balane">
+                <div class="tweet-details">
+                    <header class="tweet-header">
+                        <h2 class="tweet-author">
+                            Arnelle Balane
+                            <span class="tweet-username">@arnellebalane</span>
+                        </h2>
+                        <span class="separator">·</span>
+                        <time class="tweet-timeago">2m</time>
+                    </header>
+                    <main class="tweet-body">
+                        <p>Lorem ipsum dolor sit amet. Consectetur adipiscing elit. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
+                        <p>The quick brown fox jumped over the lazy dog.</p>
+                    </main>
+                    <footer class="tweet-footer">
+                        <button class="btn btn-icon">Like</button>
+                    </footer>
+                </div>
+            </article>
         </main>
 
         <aside class="sidebar">
