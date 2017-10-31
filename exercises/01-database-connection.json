@@ -1,16 +1,16 @@
 {
   "development": {
-    "host": "",
-    "database": "",
-    "port": 0,
-    "user": "",
-    "password": ""
+    "host": "localhost",
+    "database": "twitterdatabase",
+    "port": 5432,
+    "user": "twitteruser",
+    "password": "twitterpassword"
   },
   "test": {
-    "host": "",
-    "database": "",
-    "port": 0,
-    "user": "",
-    "password": ""
+    "host": "localhost",
+    "database": "twitterdatabase",
+    "port": 5432,
+    "user": "twitteruser",
+    "password": "twitterpassword"
   }
 }
