@@ -25,23 +25,8 @@
             {% include 'partials/tweetbox.html' %}
 
             {% for tweet in tweets %}
-                <article class="tweet">
-                    <img class="tweet-avatar" src="{{ tweet.user.avatar }}" alt="{{ tweet.user.fullname }}">
-                    <div class="tweet-details">
-                        <header class="tweet-header">
-                            <h2 class="tweet-author">
-                                {{ tweet.user.fullname }}
-                                <span class="tweet-username">@{{ tweet.user.username }}</span>
-                            </h2>
-                            <span class="separator">·</span>
-                            <time class="tweet-timeago">{{ tweet.created_at }}</time>
-                        </header>
-                        <main class="tweet-body">
-                            <pre>{{ tweet.body }}</pre>
-                        </main>
-                    </div>
-                </article>
-                {% endfor %}
+                {% include 'partials/tweet.html' %}
+            {% endfor %}
         </main>
 
         <aside class="sidebar">
