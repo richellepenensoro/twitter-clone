@@ -74,12 +74,19 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-router.post('/tweet', async (req, res) => {
+router.post('/tweets', async (req, res) => {
     const createTweetQuery = await query('07-insert-tweet.sql', {
         body: req.body.tweet,
         user: req.user.email
     });
     await db.query(createTweetQuery);
+
+    res.redirect('/');
+});
+
+router.delete('/tweets/:id', async (req, res) => {
+    const deleteTweetQuery = await query('09-delete-tweet-with-id.sql', { id: req.params.id });
+    await db.query(deleteTweetQuery);
 
     res.redirect('/');
 });
