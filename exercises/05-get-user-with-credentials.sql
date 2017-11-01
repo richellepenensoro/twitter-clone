@@ -13,16 +13,6 @@
 --     result : SOME AWESOME QUERY password = 'arnellebalane@gmail.com';
 --
 -- Write your query below:
--- SELECT email, password AS
--- FROM users
--- WHERE email = '{{email}}' AND password = '{{password}}';
---
--- UNION
---
--- SELECT username, password
--- FROM users
--- WHERE username = '{{username}}' AND password = '{{password}}';
--- SELECT email AS identifier, password
--- FROM users
--- WHERE (identifier = '{{identifier}}') AND password = '{{password}}';
-SELECT (email, password) FROM users WHERE email = '{{email}}' AND password = '{{password}}';
+SELECT (email, username) AS identifier, password
+FROM users
+WHERE (email = '{{identifier}}' OR username = '{{identifier}}') AND password = '{{password}}';
