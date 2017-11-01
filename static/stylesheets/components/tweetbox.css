@@ -25,3 +25,8 @@
     font-size: 1.4rem;
     resize: none;
 }
+
+.tweetbox .tweet-input:not(:invalid),
+.tweetbox .tweet-input:focus {
+    height: 7.2rem;
+}
