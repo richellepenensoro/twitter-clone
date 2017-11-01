@@ -5,10 +5,12 @@ const { flash } = require('./middlewares');
 const { query } = require('./utils');
 
 router.use(flash);
+router.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
 
 router.get('/', (req, res) => {
-    res.locals.user = req.user;
-
     if (req.user) {
         res.render('feed.html');
     } else {
