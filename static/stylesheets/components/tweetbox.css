@@ -1,16 +1,17 @@
 .tweetbox {
     display: flex;
     align-items: flex-start;
-    padding: 1.6rem;
+    padding: 1rem 1.2rem 1rem 2.8rem;
     background-color: var(--primary-color-light);
 }
 
 .tweetbox .avatar {
     flex-shrink: 0;
-    width: 3.6rem;
-    height: 3.6rem;
+    width: 3.2rem;
+    height: 3.2rem;
     border-radius: 50%;
-    margin-right: 0.8rem;
+    margin-top: 2px;
+    margin-right: 1rem;
     object-fit: cover;
     object-position: center center;
 }
