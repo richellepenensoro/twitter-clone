@@ -22,10 +22,7 @@
         </aside>
 
         <main class="content">
-            <form class="tweetbox" action="#" method="post">
-                <img class="avatar" src="{{ user.avatar }}" alt="{{ user.fullname }}">
-                <textarea class="tweet-input" name="tweet" maxlength="140" placeholder="What's happening?" required></textarea>
-            </form>
+            {% include 'partials/tweetbox.html' %}
 
             <article class="tweet">
                 <img class="tweet-avatar" src="static/images/default-avatar.png" alt="Arnelle Balane">

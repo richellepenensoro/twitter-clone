@@ -1,6 +1,7 @@
 .tweetbox {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     padding: 1rem 1.2rem 1rem 2.8rem;
     background-color: var(--primary-color-light);
 }
@@ -29,4 +30,19 @@
 .tweetbox .tweet-input:not(:invalid),
 .tweetbox .tweet-input:focus {
     height: 7.2rem;
+}
+
+.tweetbox-actions {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.tweetbox .tweet-input:not(:invalid) + .tweetbox-actions,
+.tweetbox .tweet-input:focus + .tweetbox-actions {
+    display: flex;
+}
+
+.tweetbox-actions .tweet-btn {
+    margin-left: auto;
 }

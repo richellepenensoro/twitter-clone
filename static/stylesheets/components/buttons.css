@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.btn:disabled {
+    opacity: 0.25;
+}
+
 .btn-primary {
     color: #fff;
     background-color: var(--primary-color);
