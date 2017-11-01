@@ -13,6 +13,6 @@
 --     result : SOME AWESOME QUERY password = 'arnellebalane@gmail.com';
 --
 -- Write your query below:
-SELECT (email, username) AS identifier, password
+SELECT *
 FROM users
 WHERE (email = '{{identifier}}' OR username = '{{identifier}}') AND password = '{{password}}';
