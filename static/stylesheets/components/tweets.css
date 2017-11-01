@@ -69,6 +69,11 @@
     margin-bottom: 0;
 }
 
+.tweet-body pre {
+    margin: 0;
+    font: inherit;
+}
+
 .tweet-footer {
     margin-top: 1.2rem;
 }

@@ -24,40 +24,24 @@
         <main class="content">
             {% include 'partials/tweetbox.html' %}
 
-            <article class="tweet">
-                <img class="tweet-avatar" src="static/images/default-avatar.png" alt="Arnelle Balane">
-                <div class="tweet-details">
-                    <header class="tweet-header">
-                        <h2 class="tweet-author">
-                            Arnelle Balane
-                            <span class="tweet-username">@arnellebalane</span>
-                        </h2>
-                        <span class="separator">·</span>
-                        <time class="tweet-timeago">2m</time>
-                    </header>
-                    <main class="tweet-body">
-                        <p>Lorem ipsum dolor sit amet. Consectetur adipiscing elit. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-                        <p>The quick brown fox jumped over the lazy dog.</p>
-                    </main>
-                </div>
-            </article>
-            <article class="tweet">
-                <img class="tweet-avatar" src="static/images/default-avatar.png" alt="Arnelle Balane">
-                <div class="tweet-details">
-                    <header class="tweet-header">
-                        <h2 class="tweet-author">
-                            Arnelle Balane
-                            <span class="tweet-username">@arnellebalane</span>
-                        </h2>
-                        <span class="separator">·</span>
-                        <time class="tweet-timeago">2m</time>
-                    </header>
-                    <main class="tweet-body">
-                        <p>Lorem ipsum dolor sit amet. Consectetur adipiscing elit. Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-                        <p>The quick brown fox jumped over the lazy dog.</p>
-                    </main>
-                </div>
-            </article>
+            {% for tweet in tweets %}
+                <article class="tweet">
+                    <img class="tweet-avatar" src="{{ tweet.user.avatar }}" alt="{{ tweet.user.fullname }}">
+                    <div class="tweet-details">
+                        <header class="tweet-header">
+                            <h2 class="tweet-author">
+                                {{ tweet.user.fullname }}
+                                <span class="tweet-username">@{{ tweet.user.username }}</span>
+                            </h2>
+                            <span class="separator">·</span>
+                            <time class="tweet-timeago">{{ tweet.created_at }}</time>
+                        </header>
+                        <main class="tweet-body">
+                            <pre>{{ tweet.body }}</pre>
+                        </main>
+                    </div>
+                </article>
+                {% endfor %}
         </main>
 
         <aside class="sidebar">

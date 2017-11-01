@@ -1,5 +1,6 @@
 const router = new require('express').Router();
 const passport = require('./config/passport');
+const { distanceInWords } = require('date-fns');
 const db = require('./config/database');
 const { flash } = require('./middlewares');
 const { query } = require('./utils');
@@ -10,9 +11,23 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     if (req.user) {
-        res.render('feed.html');
+        const getAllTweetsQuery = await query('08-get-all-tweets.sql');
+        let tweets = await db.query(getAllTweetsQuery);
+        tweets = await Promise.all(tweets.rows.map(tweet => (
+            new Promise(async (resolve, reject) => {
+                const getUsersWithEmailQuery = await query('03-get-users-with-email.sql', { email: tweet.user_email });
+                const users = await db.query(getUsersWithEmailQuery);
+
+                tweet.user = users.rows[0];
+                tweet.user.avatar = 'static/images/default-avatar.png';
+                tweet.created_at = distanceInWords(new Date(tweet.created_at), new Date());
+                resolve(tweet);
+            })
+        )));
+        const context = { tweets };
+        res.render('feed.html', context);
     } else {
         res.render('landing.html');
     }
