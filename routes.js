@@ -57,4 +57,14 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+router.post('/tweet', async (req, res) => {
+    const createTweetQuery = await query('07-insert-tweet.sql', {
+        body: req.body.tweet,
+        user: req.user.email
+    });
+    await db.query(createTweetQuery);
+
+    res.redirect('/');
+});
+
 module.exports = router;
