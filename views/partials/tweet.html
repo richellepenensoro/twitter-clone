@@ -21,7 +21,7 @@
             </div>
         </header>
         <main class="tweet-body">
-            <pre>{{ tweet.body }}</pre>
+            <p>{{ tweet.body | safe | nl2br }}</p>
         </main>
     </div>
 </article>
