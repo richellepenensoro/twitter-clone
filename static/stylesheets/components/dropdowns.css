@@ -8,8 +8,6 @@
 
 .dropdown-content {
     position: absolute;
-    top: calc(100% + 10px);
-    right: -1rem;
     border: 1px solid var(--gray-2);
     border-radius: 3px;
     background-color: #fff;
@@ -29,8 +27,7 @@
     background-color: #fff;
 
     position: absolute;
-    top: -0.8rem;
-    right: 1.7rem;
+    top: -0.9rem;
 
     transform-origin: center center;
     transform: rotate(45deg);
@@ -41,4 +38,23 @@
 
 #site-header .user-actions .dropdown-content {
     width: 20rem;
+    top: calc(100% + 10px);
+    right: -0.5rem;
+}
+
+#site-header .user-actions .dropdown-content::before {
+    right: 1.2rem;
+}
+
+
+/** Tweet actions dropdown **/
+
+.tweet-actions .dropdown-content {
+    width: 20rem;
+    top: 2.4rem;
+    left: -1.8rem;
+}
+
+.tweet-actions .dropdown-content::before {
+    left: 1.2rem;
 }

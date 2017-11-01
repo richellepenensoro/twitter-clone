@@ -8,6 +8,17 @@
             </h2>
             <span class="separator">·</span>
             <time class="tweet-timeago">{{ tweet.created_at }}</time>
+
+            <div class="tweet-actions dropdown js-dropdown">
+                <button class="tweet-actions-toggle dropdown-trigger js-dropdown-trigger"></button>
+                <div class="dropdown-content dropdown-content--hidden js-dropdown-content">
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a href="#">Delete Tweet</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </header>
         <main class="tweet-body">
             <pre>{{ tweet.body }}</pre>
