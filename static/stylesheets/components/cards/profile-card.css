@@ -1,0 +1,37 @@
+.profile-card .cover-photo {
+    display: block;
+    width: 100%;
+    height: 10rem;
+    margin-top: -1px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.profile-card header {
+    padding: 1rem;
+    padding-left: 9.2rem;
+    position: relative;
+}
+
+.profile-card .user-avatar {
+    width: 7.2rem;
+    height: 7.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center center;
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+}
+
+.profile-card h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.profile-card h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--gray-3);
+}

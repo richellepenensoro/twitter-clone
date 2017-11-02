@@ -1,0 +1,16 @@
+.page-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 0;
+}
+
+.sidebar {
+    flex-shrink: 0;
+    width: 30rem;
+}
+
+.content {
+    flex-grow: 1;
+    border: 1px solid var(--gray-1);
+    margin: 0 1rem;
+}

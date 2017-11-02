@@ -1,16 +1,33 @@
 const router = new require('express').Router();
 const passport = require('./config/passport');
+const { distanceInWords } = require('date-fns');
 const db = require('./config/database');
 const { flash } = require('./middlewares');
 const { query } = require('./utils');
 
 router.use(flash);
-
-router.get('/', (req, res) => {
+router.use((req, res, next) => {
     res.locals.user = req.user;
+    next();
+});
 
+router.get('/', async (req, res) => {
     if (req.user) {
-        res.render('feed.html');
+        const getAllTweetsQuery = await query('08-get-all-tweets.sql');
+        let tweets = await db.query(getAllTweetsQuery);
+        tweets = await Promise.all(tweets.rows.map(tweet => (
+            new Promise(async (resolve, reject) => {
+                const getUsersWithEmailQuery = await query('03-get-users-with-email.sql', { email: tweet.user_email });
+                const users = await db.query(getUsersWithEmailQuery);
+
+                tweet.user = users.rows[0];
+                tweet.user.avatar = 'static/images/default-avatar.png';
+                tweet.created_at = distanceInWords(new Date(tweet.created_at), new Date());
+                resolve(tweet);
+            })
+        )));
+        const context = { tweets };
+        res.render('feed.html', context);
     } else {
         res.render('landing.html');
     }
@@ -54,6 +71,23 @@ router.post('/signup', async (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
+    res.redirect('/');
+});
+
+router.post('/tweets', async (req, res) => {
+    const createTweetQuery = await query('07-insert-tweet.sql', {
+        body: req.body.tweet,
+        user: req.user.email
+    });
+    await db.query(createTweetQuery);
+
+    res.redirect('/');
+});
+
+router.delete('/tweets/:id', async (req, res) => {
+    const deleteTweetQuery = await query('09-delete-tweet-with-id.sql', { id: req.params.id });
+    await db.query(deleteTweetQuery);
+
     res.redirect('/');
 });
 

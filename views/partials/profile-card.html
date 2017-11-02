@@ -1,0 +1,24 @@
+<section class="card profile-card">
+    <img class="cover-photo" src="static/images/default-cover.jpg" alt="{{ user.fullname }}">
+
+    <header>
+        <img class="user-avatar" src="{{ user.avatar }}" alt="{{ user.fullname }}">
+        <h1><a href="#">{{ user.fullname }}</a></h1>
+        <h2><a href="#">@{{ user.username }}</a></h2>
+    </header>
+
+    <ul class="stats">
+        <li class="stat">
+            <p class="stat-label">Tweets</p>
+            <p class="stat-value">0</p>
+        </li>
+        <li class="stat">
+            <p class="stat-label">Following</p>
+            <p class="stat-value">0</p>
+        </li>
+        <li class="stat">
+            <p class="stat-label">Followers</p>
+            <p class="stat-value">0</p>
+        </li>
+    </ul>
+</section>
