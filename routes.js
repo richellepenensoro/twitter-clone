@@ -77,7 +77,7 @@ router.get('/logout', (req, res) => {
 router.post('/tweets', async (req, res) => {
     const createTweetQuery = await query('07-insert-tweet.sql', {
         body: req.body.tweet,
-        user: req.user.email
+        user_email: req.user.email
     });
     await db.query(createTweetQuery);
 
