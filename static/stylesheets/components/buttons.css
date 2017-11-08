@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.btn:disabled {
+    opacity: 0.25;
+}
+
 .btn-primary {
     color: #fff;
     background-color: var(--primary-color);
@@ -28,7 +32,7 @@
 
 .btn-outline:hover,
 .btn-outline:focus {
-    background-color: transparent;
+    background-color: var(--primary-color-light);
 }
 
 .btn-outline.btn-primary {
@@ -40,6 +44,13 @@
     border-color: var(--primary-color-dark);
     color: #fff;
     background-color: var(--primary-color-dark);
+}
+
+
+/** Button sizes variations **/
+
+.btn-small {
+    line-height: 2.4rem;
 }
 
 

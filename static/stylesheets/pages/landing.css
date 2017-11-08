@@ -80,13 +80,7 @@ main.wrapper {
 }
 
 .login-form .actions a {
-    text-decoration: none;
     color: var(--primary-color);
-}
-
-.login-form .actions a:hover,
-.login-form .actions a:focus {
-    text-decoration: underline;
 }
 
 .login-form .actions .separator {

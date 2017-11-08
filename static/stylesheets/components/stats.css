@@ -1,0 +1,33 @@
+.stats {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.stat {
+    flex: 1 0 0;
+}
+
+.stat p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: var(--gray-3);
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+
+/** Profile card stats **/
+
+.stats {
+    padding: 1.6rem;
+    padding-top: 0;
+}

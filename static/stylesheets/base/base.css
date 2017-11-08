@@ -6,3 +6,12 @@ body {
     color: var(--primary-text-color);
     background-color: var(--body-background-color);
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}

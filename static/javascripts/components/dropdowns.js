@@ -15,6 +15,12 @@
         trigger.addEventListener('click', e => {
             e.stopPropagation();
             content.classList.toggle(dropdownContentHiddenClass);
+
+            $$('.js-dropdown').forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    closeDropdown(otherDropdown);
+                }
+            });
         });
 
         content.addEventListener('click', e => e.stopPropagation());

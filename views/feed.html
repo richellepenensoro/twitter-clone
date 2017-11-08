@@ -2,6 +2,35 @@
 
 {% block title %}Twitter Clone{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="static/stylesheets/layout/page.css">
+    <link rel="stylesheet" href="static/stylesheets/components/cards/cards.css">
+    <link rel="stylesheet" href="static/stylesheets/components/cards/follow-card.css">
+    <link rel="stylesheet" href="static/stylesheets/components/cards/profile-card.css">
+    <link rel="stylesheet" href="static/stylesheets/components/stats.css">
+    <link rel="stylesheet" href="static/stylesheets/components/tweetbox.css">
+    <link rel="stylesheet" href="static/stylesheets/components/tweets.css">
+    <link rel="stylesheet" href="static/stylesheets/pages/feed.css">
+{% endblock %}
+
 {% block contents %}
     {% include 'partials/header.html' %}
+
+    <div class="wrapper page-container">
+        <aside class="sidebar">
+            {% include 'partials/profile-card.html' %}
+        </aside>
+
+        <main class="content">
+            {% include 'partials/tweetbox.html' %}
+
+            {% for tweet in tweets %}
+                {% include 'partials/tweet.html' %}
+            {% endfor %}
+        </main>
+
+        <aside class="sidebar">
+            {% include 'partials/follow-card.html' %}
+        </aside>
+    </div>
 {% endblock %}
