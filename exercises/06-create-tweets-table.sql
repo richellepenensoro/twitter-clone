@@ -5,3 +5,11 @@
 --     created_at   (timestamp)     default to current timestamp
 --
 -- Write your query below:
+DROP TABLE IF EXISTS tweets;
+
+CREATE TABLE tweets(
+  id SERIAL PRIMARY KEY,
+  body VARCHAR(140) NOT NULL,
+  user_email VARCHAR(30) NOT NULL,
+  created_at TIMESTAMP DEFAULT now()
+);

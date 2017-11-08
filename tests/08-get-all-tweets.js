@@ -5,7 +5,7 @@ const { query } = require('../utils');
 const exercisesDirectory = config.get('EXERCISES_DIRECTORY');
 const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.json`);
 
-suite('04-insert-user', function() {
+suite('08-get-all-tweets', function() {
     const dropTweetsTableQuery = 'DROP TABLE IF EXISTS tweets;';
 
     suiteSetup(async function() {
