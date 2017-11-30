@@ -13,7 +13,10 @@
                 <img class="avatar" src="static/images/default-avatar.png" alt="{{suggestion.fullname}}">
                 <div class="details">
                     <p class="name">{{suggestion.fullname}} <span class="username">@{{suggestion.username}}</span></p>
-                    <button class="btn btn-outline btn-primary btn-small">Follow</button>
+                    <form action="/follow" method="POST">
+                        <input type="hidden" name="following" value="{{suggestion.email}}">
+                        <button class="btn btn-outline btn-primary btn-small">Follow</button>
+                    </form>
                 </div>
             </li>
         {% endfor %}

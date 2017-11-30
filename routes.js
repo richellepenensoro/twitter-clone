@@ -109,4 +109,15 @@ router.delete('/tweets/:id', async (req, res) => {
     res.redirect('/');
 });
 
+router.post('/follow', async (req, res) => {
+    const context = {
+        following: req.body.following,
+        follower: req.user.email
+    };
+    const followUserQuery = await query('15-follow-user.sql', context);
+    await db.query(followUserQuery);
+
+    res.redirect('/');
+});
+
 module.exports = router;
