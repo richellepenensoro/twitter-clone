@@ -15,10 +15,16 @@ router.get('/', async (req, res) => {
     if (req.user) {
         const getAllTweetsQuery = await query('08-get-all-tweets.sql');
         const getFollowSuggestionsQuery = await query('14-get-follow-suggestions.sql', { email: req.user.email });
+        const countTweetsQuery = await query('11-count-tweets.sql', { email: req.user.email });
+        const countFollowingsQuery = await query('12-count-followings.sql', { email: req.user.email });
+        const countFollowersQuery = await query('13-count-followers.sql', { email: req.user.email });
 
-        let [tweets, suggestions] = await Promise.all([
+        let [tweets, suggestions, tweetsCount, followingsCount, followersCount] = await Promise.all([
             db.query(getAllTweetsQuery),
-            db.query(getFollowSuggestionsQuery)
+            db.query(getFollowSuggestionsQuery),
+            db.query(countTweetsQuery),
+            db.query(countFollowingsQuery),
+            db.query(countFollowersQuery)
         ]);
 
         tweets = await Promise.all(tweets.rows.map(tweet => (
@@ -34,7 +40,10 @@ router.get('/', async (req, res) => {
         )));
         const context = {
             tweets,
-            suggestions: suggestions.rows
+            suggestions: suggestions.rows,
+            tweetsCount: tweetsCount.rows[0].count,
+            followingsCount: followingsCount.rows[0].count,
+            followersCount: followersCount.rows[0].count
         };
         res.render('feed.html', context);
     } else {
