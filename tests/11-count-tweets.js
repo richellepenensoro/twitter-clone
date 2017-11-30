@@ -5,7 +5,7 @@ const { query } = require('../utils');
 const exercisesDirectory = config.get('EXERCISES_DIRECTORY');
 const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.json`);
 
-suite('08-get-all-tweets', function() {
+suite('11-count-tweets', function() {
     const dropTweetsTableQuery = 'DROP TABLE IF EXISTS tweets;';
 
     suiteSetup(async function() {
@@ -21,6 +21,9 @@ suite('08-get-all-tweets', function() {
         }, {
             body: 'second tweet',
             user_email: 'seconduser@email.com'
+        }, {
+            body: 'third tweet',
+            user_email: 'firstuser@email.com'
         }];
 
         for (let tweetData of this.tweetsToInsert) {
@@ -34,23 +37,19 @@ suite('08-get-all-tweets', function() {
         await this.pool.end();
     });
 
-    test('returns all tweets', async function() {
-        const getAllTweetsQuery = await query('08-get-all-tweets.sql');
-        const tweets = await this.pool.query(getAllTweetsQuery);
+    test('returns correct tweets count', async function() {
+        const testCases = [
+            ['firstuser@email.com', 2],
+            ['seconduser@email.com', 1]
+        ];
 
-        if (tweets.rows.length !== this.tweetsToInsert.length) {
-            throw new Error('query did not return all tweets');
-        }
-    });
+        for (const [email, count] of testCases) {
+            const countTweetsQuery = await query('11-count-tweets.sql', { email });
+            const result = await this.pool.query(countTweetsQuery);
+            const tweetsCount = parseInt(result.rows[0].count, 10);
 
-    test('returns the most recent tweets first', async function() {
-        const getAllTweetsQuery = await query('08-get-all-tweets.sql');
-        const tweets = await this.pool.query(getAllTweetsQuery);
-        const tweetsToInsert = this.tweetsToInsert;
-
-        for (let i = 0; i < tweets.rows.length; i++) {
-            if (tweets.rows[i].body !== tweetsToInsert[tweetsToInsert.length - (1 + i)].body) {
-                throw new Error('query did not return the most recent tweets first');
+            if (tweetsCount !== count) {
+                throw new Error('query returned an incorrect tweets count');
             }
         }
     });
