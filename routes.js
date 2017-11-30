@@ -14,7 +14,13 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
     if (req.user) {
         const getAllTweetsQuery = await query('08-get-all-tweets.sql');
-        let tweets = await db.query(getAllTweetsQuery);
+        const getFollowSuggestionsQuery = await query('14-get-follow-suggestions.sql', { email: req.user.email });
+
+        let [tweets, suggestions] = await Promise.all([
+            db.query(getAllTweetsQuery),
+            db.query(getFollowSuggestionsQuery)
+        ]);
+
         tweets = await Promise.all(tweets.rows.map(tweet => (
             new Promise(async (resolve, reject) => {
                 const getUsersWithEmailQuery = await query('03-get-users-with-email.sql', { email: tweet.user_email });
@@ -26,7 +32,10 @@ router.get('/', async (req, res) => {
                 resolve(tweet);
             })
         )));
-        const context = { tweets };
+        const context = {
+            tweets,
+            suggestions: suggestions.rows
+        };
         res.render('feed.html', context);
     } else {
         res.render('landing.html');
