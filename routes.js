@@ -14,10 +14,10 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
     if (req.user) {
         const getAllTweetsQuery = await query('08-get-all-tweets.sql');
-        const getFollowSuggestionsQuery = await query('14-get-follow-suggestions.sql', { email: req.user.email });
-        const countTweetsQuery = await query('11-count-tweets.sql', { email: req.user.email });
-        const countFollowingsQuery = await query('12-count-followings.sql', { email: req.user.email });
-        const countFollowersQuery = await query('13-count-followers.sql', { email: req.user.email });
+        const getFollowSuggestionsQuery = await query('16-get-follow-suggestions.sql', { email: req.user.email });
+        const countTweetsQuery = await query('13-count-tweets.sql', { email: req.user.email });
+        const countFollowingsQuery = await query('14-count-followings.sql', { email: req.user.email });
+        const countFollowersQuery = await query('15-count-followers.sql', { email: req.user.email });
 
         let [tweets, suggestions, tweetsCount, followingsCount, followersCount] = await Promise.all([
             db.query(getAllTweetsQuery),
@@ -114,7 +114,7 @@ router.post('/follow', async (req, res) => {
         following: req.body.following,
         follower: req.user.email
     };
-    const followUserQuery = await query('15-follow-user.sql', context);
+    const followUserQuery = await query('11-follow-user.sql', context);
     await db.query(followUserQuery);
 
     res.redirect('/');

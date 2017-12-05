@@ -5,7 +5,7 @@ const { query } = require('../utils');
 const exercisesDirectory = config.get('EXERCISES_DIRECTORY');
 const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.json`);
 
-suite('11-count-tweets', function() {
+suite('13-count-tweets', function() {
     const dropTweetsTableQuery = 'DROP TABLE IF EXISTS tweets;';
 
     suiteSetup(async function() {
@@ -15,7 +15,7 @@ suite('11-count-tweets', function() {
         const createTweetsTableQuery = await query('06-create-tweets-table.sql');
         await this.pool.query(createTweetsTableQuery);
 
-        this.tweetsToInsert = [{
+        const tweetsToInsert = [{
             body: 'first tweet',
             user_email: 'firstuser@email.com'
         }, {
@@ -26,7 +26,7 @@ suite('11-count-tweets', function() {
             user_email: 'firstuser@email.com'
         }];
 
-        for (let tweetData of this.tweetsToInsert) {
+        for (let tweetData of tweetsToInsert) {
             const insertTweetQuery = await query('07-insert-tweet.sql', tweetData);
             await this.pool.query(insertTweetQuery);
         }
@@ -44,7 +44,7 @@ suite('11-count-tweets', function() {
         ];
 
         for (const [email, count] of testCases) {
-            const countTweetsQuery = await query('11-count-tweets.sql', { email });
+            const countTweetsQuery = await query('13-count-tweets.sql', { email });
             const result = await this.pool.query(countTweetsQuery);
             const tweetsCount = parseInt(result.rows[0].count, 10);
 
