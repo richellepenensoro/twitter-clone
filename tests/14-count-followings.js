@@ -36,10 +36,20 @@ suite('14-count-followings', function() {
             password: 'passwordthree'
         }];
         const followsToInsert = [
-            { following: 1, follower: 2 },
-            { following: 1, follower: 3 },
-            { following: 3, follower: 1 }
+            { following: 'userone@email.com', follower: 'usertwo@email.com' },
+            { following: 'userone@email.com', follower: 'userthree@email.com' },
+            { following: 'userthree@email.com', follower: 'userone@email.com' },
+            { following: 'userthree@email.com', follower: 'usertwo@email.com' }
         ];
+
+        for (let userData of usersToInsert) {
+            const insertUserQuery = await query('04-insert-user.sql', userData);
+            await this.pool.query(insertUserQuery);
+        }
+        for (let followData of followsToInsert) {
+            const followUserQuery = await query('11-follow-user.sql', followData);
+            await this.pool.query(followUserQuery);
+        }
     });
 
     suiteTeardown(async function() {
@@ -48,6 +58,20 @@ suite('14-count-followings', function() {
     });
 
     test('returns correct followings count', async function() {
+        const testCases = [
+            ['userone@email.com', 1],
+            ['usertwo@email.com', 2],
+            ['userthree@email.com', 1]
+        ];
 
+        for (let [email, count] of testCases) {
+            const countFollowingsQuery = await query('14-count-followings.sql', { email });
+            const result = await this.pool.query(countFollowingsQuery);
+            const followingsCount = parseInt(result.rows[0].count, 10);
+
+            if (followingsCount !== count) {
+                throw new Error('query returned an incorrect followings count');
+            }
+        }
     });
 });
