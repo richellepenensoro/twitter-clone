@@ -5,7 +5,7 @@ const { query } = require('../utils');
 const exercisesDirectory = config.get('EXERCISES_DIRECTORY');
 const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.json`);
 
-suite('14-count-followings', function() {
+suite('15-count-followers', function() {
     const dropTablesQuery = `
         DROP TABLE IF EXISTS follows;
         DROP TABLE IF EXISTS users;`;
