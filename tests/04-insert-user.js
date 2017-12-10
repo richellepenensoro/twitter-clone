@@ -6,7 +6,7 @@ const exercisesDirectory = config.get('EXERCISES_DIRECTORY');
 const databaseConfig = require(`../${exercisesDirectory}/01-database-connection.json`);
 
 suite('04-insert-user', function() {
-    const dropUsersTableQuery = 'DROP TABLE IF EXISTS users;';
+    const dropUsersTableQuery = 'DROP TABLE IF EXISTS users CASCADE;';
 
     suiteSetup(async function() {
         this.pool = new Pool(databaseConfig.test);

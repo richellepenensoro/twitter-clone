@@ -14,7 +14,19 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
     if (req.user) {
         const getAllTweetsQuery = await query('08-get-all-tweets.sql');
-        let tweets = await db.query(getAllTweetsQuery);
+        const getFollowSuggestionsQuery = await query('16-get-follow-suggestions.sql', { email: req.user.email });
+        const countTweetsQuery = await query('13-count-tweets.sql', { email: req.user.email });
+        const countFollowingsQuery = await query('14-count-followings.sql', { email: req.user.email });
+        const countFollowersQuery = await query('15-count-followers.sql', { email: req.user.email });
+
+        let [tweets, suggestions, tweetsCount, followingsCount, followersCount] = await Promise.all([
+            db.query(getAllTweetsQuery),
+            db.query(getFollowSuggestionsQuery),
+            db.query(countTweetsQuery),
+            db.query(countFollowingsQuery),
+            db.query(countFollowersQuery)
+        ]);
+
         tweets = await Promise.all(tweets.rows.map(tweet => (
             new Promise(async (resolve, reject) => {
                 const getUsersWithEmailQuery = await query('03-get-users-with-email.sql', { email: tweet.user_email });
@@ -26,7 +38,13 @@ router.get('/', async (req, res) => {
                 resolve(tweet);
             })
         )));
-        const context = { tweets };
+        const context = {
+            tweets,
+            suggestions: suggestions.rows,
+            tweetsCount: tweetsCount.rows[0].count,
+            followingsCount: followingsCount.rows[0].count,
+            followersCount: followersCount.rows[0].count
+        };
         res.render('feed.html', context);
     } else {
         res.render('landing.html');
@@ -87,6 +105,17 @@ router.post('/tweets', async (req, res) => {
 router.delete('/tweets/:id', async (req, res) => {
     const deleteTweetQuery = await query('09-delete-tweet-with-id.sql', { id: req.params.id });
     await db.query(deleteTweetQuery);
+
+    res.redirect('/');
+});
+
+router.post('/follow', async (req, res) => {
+    const context = {
+        following: req.body.following,
+        follower: req.user.email
+    };
+    const followUserQuery = await query('11-follow-user.sql', context);
+    await db.query(followUserQuery);
 
     res.redirect('/');
 });
