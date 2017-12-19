@@ -7,3 +7,13 @@
 --     created_at   (timestamp)     default to current timestamp
 --
 -- Write your query below:
+DROP TABLE IF EXISTS follows;
+
+CREATE TABLE follows(
+  id SERIAL PRIMARY KEY,
+  following VARCHAR(30) NOT NULL,
+  follower VARCHAR(30) NOT NULL,
+  created_at TIMESTAMP DEFAULT now(),
+  FOREIGN KEY(following) REFERENCES users(email),
+  FOREIGN KEY(follower) REFERENCES users(email)
+);
