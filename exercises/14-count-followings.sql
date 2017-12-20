@@ -5,3 +5,6 @@
 --     - email
 --
 -- Write your query below:
+SELECT COUNT(id)
+FROM follows
+WHERE follower = '{{email}}';

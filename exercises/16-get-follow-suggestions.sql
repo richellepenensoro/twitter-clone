@@ -6,3 +6,10 @@
 --     - email
 --
 -- Write your query below:
+SELECT email
+FROM users
+WHERE email = ALL(
+  SELECT following
+  FROM follows
+  WHERE NOT follower = '{{email}}'
+);

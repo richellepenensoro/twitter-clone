@@ -5,3 +5,6 @@
 --     - email
 --
 -- Write your query below:
+SELECT COUNT(id)
+FROM tweets
+WHERE user_email = '{{email}}';
