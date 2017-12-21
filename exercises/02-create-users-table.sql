@@ -12,6 +12,6 @@ CREATE TABLE users(
   fullname VARCHAR(30) NOT NULL,
   username VARCHAR(15) UNIQUE NOT NULL,
   email VARCHAR(30) PRIMARY KEY NOT NULL,
-  password VARCHAR(15) NOT NULL,
+  password VARCHAR(30) NOT NULL,
   created_at TIMESTAMP DEFAULT now()
 );
